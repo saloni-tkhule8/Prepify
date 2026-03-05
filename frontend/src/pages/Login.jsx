@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./Login.css";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub, FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import backArrow from "../assets/backarrow.svg";
 
 const benefits = [
   {
@@ -30,6 +32,7 @@ const benefits = [
 ];
 
 const Login = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [current, setCurrent] = useState(0);
 
@@ -43,6 +46,9 @@ const Login = () => {
 
   return (
     <div className="login-container">
+        <div className="back-arrow-link" onClick={() => navigate("/")}>
+            <img src={backArrow} alt="Back to Home" />
+        </div>
       <div className="login-left">
         <div className="auth-card">
           <h2>Login</h2>

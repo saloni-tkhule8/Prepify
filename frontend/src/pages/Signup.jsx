@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./Signup.css";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub, FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import backArrow from "../assets/backarrow.svg";
 
 const benefits = [
   {
@@ -29,6 +31,7 @@ const benefits = [
 ];
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({ username: "", email: "", password: "", confirmPassword: "" });
   const [showPass, setShowPass] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
@@ -56,6 +59,10 @@ const Signup = () => {
 
   return (
     <div className="signup-container">
+      <div className="back-arrow-link" onClick={() => navigate("/")}>
+        <img src={backArrow} alt="Back to Home" />
+      </div>
+
       {/* IMAGE LEFT */}
       <div className="signup-left">
         <div className="overlay"></div>
