@@ -1,0 +1,139 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #fdfcfc;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+  border-bottom: none;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #111;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #696565;
+  font-size: 1rem;
+}
+
+.navbar-links a:hover {
+  color: #111;
+}
+
+.navbar-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Shared button styles */
+.navbar-cta,
+.login-cta {
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease,
+              background 0.2s ease;
+}
+
+/* Get Started */
+.navbar-cta {
+  background: #111;
+  color: white;
+}
+
+.navbar-cta:hover {
+  background: #222;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+}
+
+.navbar-cta:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+
+/* Login */
+.login-cta {
+  background-color: #16a34a;
+  color: #fff;
+}
+
+.login-cta:hover {
+  background-color: #15803d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+}
+
+.login-cta:active {
+  background-color: #166534;
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+
+.navbar-logo img {
+  height: 2.25rem;
+  width: auto;
+  mix-blend-mode: multiply; 
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+}
+
+@media (max-width: 768px) {
+
+  .navbar {
+    padding: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .navbar-logo {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navbar-links {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .navbar-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+}

@@ -1,0 +1,155 @@
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6rem 6rem;
+  gap: 3rem;
+  min-height: 50vh;
+  background-color: #ece6e6;
+}
+
+.hero-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 40rem;
+  min-width: 280px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #110625;
+  line-height: 1.2;
+  margin: 0;
+  min-height: 8.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.hero-cta {
+  align-self: flex-start; 
+  background-color: #111;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease,
+              background 0.2s ease;
+}
+
+.hero-cta:hover {
+  background: #222;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+
+}
+
+.hero-cta:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);  
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 20rem;
+  max-width: 40rem;
+  border-radius: 1rem;
+  min-width: 280px;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.carousel-image {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.4s ease;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: #777676;
+}
+
+.carousel-paused {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 3rem 1.5rem;
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-left {
+    max-width: 100%;
+    align-items: center;
+  }
+  .hero-title {
+    font-size: 2.25rem;
+    min-height: auto;
+  }
+  .hero-cta {
+    align-self: center;
+  }
+  .hero-right {
+    max-width: 100%;
+    min-height: auto;
+  }
+}
