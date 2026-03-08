@@ -12,7 +12,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-links">
           {['Features', 'How to use', 'Resources', 'About us', 'Contact us'].map(link => (
-            <a key={link} href={`#${link.toLowerCase().replace(' ','-')}`}>
+            <a key={link} href={`#${link.toLowerCase().replace(/ /g, '-')}`}>
               {link}
             </a>
           ))}

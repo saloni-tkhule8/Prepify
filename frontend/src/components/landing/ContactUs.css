@@ -1,0 +1,99 @@
+.contact-us {
+  padding: 6rem 6rem;
+  background-color: #ffffff;
+}
+
+.contact-inner {
+  display: flex;
+  gap: 5rem;
+  align-items: flex-start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.contact-left { flex: 1; }
+
+.contact-tag {
+  display: inline-block;
+  background: rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.1);
+  color: #555;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
+}
+
+.contact-left h2 {
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: #111;
+  line-height: 1.2;
+  margin: 0 0 1.25rem;
+}
+
+.contact-left p {
+  font-size: 0.975rem;
+  color: #555;
+  line-height: 1.8;
+  margin: 0 0 2rem;
+}
+
+.contact-right { flex: 1.2; }
+
+.contact-email-card {
+  background: #f5f5f5;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.contact-email-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-email-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+}
+
+.contact-email-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.contact-email-btn {
+  margin-top: 0.75rem;
+  display: inline-block;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.contact-email-btn:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+  .contact-inner { flex-direction: column; gap: 3rem; }
+  .contact-us { padding: 4rem 1.5rem; }
+  .contact-left h2 { font-size: 2rem; }
+}
