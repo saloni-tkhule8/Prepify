@@ -3,6 +3,7 @@ import "./Login.css";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "../services/authService";
 import backArrow from "../assets/backarrow.svg";
 
 const benefits = [
@@ -35,8 +36,10 @@ const Login = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [current, setCurrent] = useState(0);
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  // Auto-slide logic
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % benefits.length);
@@ -44,23 +47,55 @@ const Login = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (error) setError('');
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const data = await loginUser(formData.email, formData.password);
+      if (data.success) {
+        localStorage.setItem('token', data.token);
+        navigate('/dashboard');
+      } else {
+        setError(data.message);
+      }
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="login-container">
-        <div className="back-arrow-link" onClick={() => navigate("/")}>
-            <img src={backArrow} alt="Back to Home" />
-        </div>
+      <div className="back-arrow-link" onClick={() => navigate("/")}>
+        <img src={backArrow} alt="Back to Home" />
+      </div>
       <div className="login-left">
         <div className="auth-card">
           <h2>Login</h2>
-          <form>
-            <input type="email" placeholder="Email" required />
+          {error && <div className="error-msg">{error}</div>}
+          <form onSubmit={handleSubmit}>
+            <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
             <div className="password-wrapper">
-              <input type={showPassword ? "text" : "password"} placeholder="Password" required />
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Password"
+                onChange={handleChange}
+                required
+              />
               <span className="password-toggle" onClick={() => setShowPassword(!showPassword)}>
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </span>
             </div>
-            <button className="auth-button">Login</button>
+            <button className="auth-button" disabled={loading}>
+              {loading ? 'Logging in...' : 'Login'}
+            </button>
           </form>
           <div className="auth-divider"><span>OR</span></div>
           <div className="oauth-buttons">

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './Hero.css'
 import image1 from '../../assets/hero1.webp'
 import image2 from '../../assets/hero2.webp'
@@ -12,6 +13,7 @@ const Hero = () => {
   const [current, setCurrent] = useState(0)
   const [paused, setPaused] = useState(false)
   const intervalRef = useRef(null)
+  const navigate = useNavigate()
 
   // typewriter
   useEffect(() => {
@@ -33,6 +35,10 @@ const Hero = () => {
     return () => clearInterval(intervalRef.current)
   }, [paused])
 
+  const handleGetStarted = () => {
+    navigate('/signup')
+  }
+
   return (
     <section className="hero">
       <div className="hero-left">
@@ -44,7 +50,9 @@ const Hero = () => {
           Practice real interview questions, get instant feedback,
           and land your dream job with Prefify.
         </p>
-        <button className="hero-cta">Get Started</button>
+        <button className="hero-cta" onClick={handleGetStarted}>
+          Get Started
+        </button>
       </div>
 
       <div className="hero-right">
@@ -71,4 +79,4 @@ const Hero = () => {
   )
 }
 
-export default Hero
+export default Hero;

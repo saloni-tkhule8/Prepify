@@ -1,0 +1,23 @@
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #0f1117;
+  font-family: 'Sora', sans-serif;
+}
+
+.dashboard-main {
+  margin-left: 240px;
+  flex: 1;
+  padding: 0;
+  background: #0f1117;
+  overflow-y: auto;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .dashboard-main {
+    margin-left: 0;
+    width: 100%;
+    padding-bottom: 72px; /* space for bottom navbar */
+  }
+}

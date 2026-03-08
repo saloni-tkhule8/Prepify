@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import backArrow from "../assets/backarrow.svg";
+import { registerUser } from "../services/authService";
 
 const benefits = [
   {
@@ -37,6 +38,7 @@ const Signup = () => {
   const [showConfirm, setShowConfirm] = useState(false);
   const [current, setCurrent] = useState(0);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => setCurrent(p => (p + 1) % benefits.length), 5000);
@@ -48,14 +50,29 @@ const Signup = () => {
     if (error) setError("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match!");
       return;
     }
-    console.log("Signup Data:", formData);
+
+    setLoading(true);
+    try {
+      const data = await registerUser(formData.username, formData.email, formData.password);
+      if (data.success) {
+        localStorage.setItem('token', data.token);
+        navigate('/dashboard');
+      } else {
+        setError(data.message);
+      }
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);  // ← always reset
+    }
   };
+
 
   return (
     <div className="signup-container">
@@ -112,7 +129,10 @@ const Signup = () => {
               </span>
             </div>
 
-            <button type="submit" className="auth-button">Sign Up</button>
+            <button type="submit" className="auth-button" disabled={loading}>
+             {loading ? 'Signing up...' : 'Sign Up'}
+            </button>
+
           </form>
           <div className="auth-divider"><span>OR</span></div>
           <div className="oauth-buttons">
