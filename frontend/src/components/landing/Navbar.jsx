@@ -7,8 +7,8 @@ const Navbar = () => {
   return (
       <nav className="navbar">  
         <div className="navbar-logo">
-          <img src={logo} alt="Prefify" />
-          <p>Prefify</p>
+          <img src={logo} alt="Prepify" />
+          <p>Prepify</p>
         </div>
         <div className="navbar-links">
           {['Features', 'How to use', 'Resources', 'About us', 'Contact us'].map(link => (

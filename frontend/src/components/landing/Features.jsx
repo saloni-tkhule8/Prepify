@@ -8,7 +8,7 @@ const features = [
   {
     title: 'Role-based Questions',
     description: `Stop practicing random questions that never show up in real interviews.
-    Prefify generates questions specifically matched to your role, stack, and seniority 
+    Prepify generates questions specifically matched to your role, stack, and seniority 
     level — so every session feels like the real thing. Candidates who practice with 
     targeted questions are 3x more likely to clear the first round.`,
     image: feature1,
@@ -16,14 +16,14 @@ const features = [
   {
     title: 'AI Feedback',
     description: `Most people don't know why they failed — they just get a rejection email. 
-    Prefify changes that. After every answer, you get a score, a breakdown of what you nailed, 
+    Prepify changes that. After every answer, you get a score, a breakdown of what you nailed, 
     what you missed, and exactly how to say it better. "I went from blanking on system design
     to confidently explaining trade-offs in two weeks."`,
     image: feature2,
   },
   {
     title: 'Resume Analyzer',
-    description: `Your resume says a lot — but are you ready to back it up? Prefify scans every 
+    description: `Your resume says a lot — but are you ready to back it up? Prepify scans every 
     line of your resume, spots the questions interviewers will almost certainly ask, and helps you 
     craft answers before you're put on the spot. Candidates using resume-based prep
     report 40% fewer surprises in interviews.`,
@@ -31,7 +31,7 @@ const features = [
   },
   {
     title: 'Roadmap Generator',
-    description: `Preparation without a plan is just noise. Tell Prefify your target role
+    description: `Preparation without a plan is just noise. Tell Prepify your target role
     and how many weeks you have — it builds a structured, day-by-day study plan so you're
     never wondering "what should I study today?" Users with a clear roadmap are 2x more
     likely to feel confident walking into their interview.`,

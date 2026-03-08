@@ -16,7 +16,7 @@ const uploadToCloudinary = (buffer) => {
   return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
       {
-        folder: 'prefify/avatars',
+        folder: 'Prepify/avatars',
         transformation: [{ width: 400, height: 400, crop: 'fill', gravity: 'face' }],
       },
       (error, result) => {

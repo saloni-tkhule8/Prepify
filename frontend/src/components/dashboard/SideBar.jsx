@@ -48,8 +48,8 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
-        <img src={logo} alt="Prefify" className="logo-img" />
-        <span className="logo-name">Prefify</span>
+        <img src={logo} alt="Prepify" className="logo-img" />
+        <span className="logo-name">Prepify</span>
       </div>
 
       <nav className="sidebar-nav">

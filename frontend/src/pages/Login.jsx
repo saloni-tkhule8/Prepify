@@ -9,26 +9,26 @@ import backArrow from "../assets/backarrow.svg";
 const benefits = [
   {
     title: 'Practice with Purpose',
-    description: `"Interview preparation should never feel random." Prefify generates questions
+    description: `"Interview preparation should never feel random." Prepify generates questions
     tailored to your role, tech stack, and experience level so every practice session moves you
     closer to the job you want.`
   },
   {
     title: 'Feedback that Actually Helps',
-    description: `Great answers are built through reflection. Prefify analyzes every response, gives
+    description: `Great answers are built through reflection. Prepify analyzes every response, gives
     you a score, highlights what worked, and shows how you can communicate your ideas more clearly
     and confidently.`
   },
   {
     title: 'Your Resume, Interview Ready',
-    description: `Your resume already tells a story — Prefify simply helps you prepare to tell it better.
+    description: `Your resume already tells a story — Prepify simply helps you prepare to tell it better.
     It scans your resume, predicts the questions interviewers are likely to ask, and helps you craft thoughtful
     answers in advance.`
   },
   {
     title: 'A Clear Path Forward',
     description: `Preparation becomes easier when you know exactly what to do next. Share your target role
-    and timeline, and Prefify builds a structured learning roadmap that guides your progress day by day.`
+    and timeline, and Prepify builds a structured learning roadmap that guides your progress day by day.`
   }
 ];
 

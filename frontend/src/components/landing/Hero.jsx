@@ -6,7 +6,7 @@ import image2 from '../../assets/hero2.webp'
 import image3 from '../../assets/hero3.webp'
 
 const images = [image1, image2, image3]
-const fullText = "Ace Your Interviews with Prefify"
+const fullText = "Ace Your Interviews with Prepify"
 
 const Hero = () => {
   const [displayed, setDisplayed] = useState('')
@@ -48,7 +48,7 @@ const Hero = () => {
         </h1>
         <p className="hero-subtitle">
           Practice real interview questions, get instant feedback,
-          and land your dream job with Prefify.
+          and land your dream job with Prepify.
         </p>
         <button className="hero-cta" onClick={handleGetStarted}>
           Get Started
