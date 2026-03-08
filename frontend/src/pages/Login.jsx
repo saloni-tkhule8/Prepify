@@ -9,7 +9,7 @@ import backArrow from "../assets/backarrow.svg";
 const benefits = [
   {
     title: 'Practice with Purpose',
-    description: `“Interview preparation should never feel random.” Prefify generates questions
+    description: `"Interview preparation should never feel random." Prefify generates questions
     tailored to your role, tech stack, and experience level so every practice session moves you
     closer to the job you want.`
   },
@@ -69,6 +69,13 @@ const Login = () => {
       setLoading(false);
     }
   };
+  const handleGoogleAuth = () => {
+    window.location.href = 'http://localhost:5000/api/auth/google';
+  };
+
+  const handleGitHubAuth = () => {
+    window.location.href = 'http://localhost:5000/api/auth/github';
+  };
 
   return (
     <div className="login-container">
@@ -99,8 +106,12 @@ const Login = () => {
           </form>
           <div className="auth-divider"><span>OR</span></div>
           <div className="oauth-buttons">
-            <button className="oauth"><FcGoogle className="oauth-icon" /> Google</button>
-            <button className="oauth"><FaGithub className="oauth-icon" /> GitHub</button>
+            <button className="oauth" onClick={handleGoogleAuth}>
+              <FcGoogle className="oauth-icon" /> Google
+            </button>
+            <button className="oauth" onClick={handleGitHubAuth}>
+              <FaGithub className="oauth-icon" /> GitHub
+            </button>
           </div>
           <p className="auth-footer">Don't have an account? <a href="/signup">Signup</a></p>
         </div>

@@ -9,8 +9,8 @@ import Roadmap from "./components/dashboard/Roadmap";
 import Resume from "./components/dashboard/Resume";
 import Settings from "./components/dashboard/Settings";
 import Interview from "./components/dashboard/Interview";
-
-const DashboardHome = () => <p>Dashboard Home</p>
+import DashboardHome from "./components/dashboard/DashboardHome";
+import OAuthCallback from './pages/OAuthCallBack';
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/auth/callback" element={<OAuthCallback />} />
       <Route path="/dashboard" element={
         <ProtectedRoute>
           <Dashboard />

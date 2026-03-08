@@ -48,13 +48,6 @@
   margin: 0;
 }
 
-.icon-interview-header {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  opacity: 0.9;
-}
-
 /* ── Tabs ───────────────────────────────────────────────── */
 .interview-tabs {
   display: flex;

@@ -1,13 +1,18 @@
 const model = require("../config/gemini");
 
 
-const generateQuestions = async ({ role, level, topics = [], count = 5 }) => {
+const generateQuestions = async ({ role, level, topics = [], count = 5, company = '' }) => {
   const topicsLine = topics.length
     ? `Topics to cover: ${topics.join(', ')}.`
     : `Cover a broad range of relevant topics for a ${role} developer.`;
 
+  const companyLine = company
+    ? `The interview is specifically for ${company}. Tailor questions to their known tech stack, culture, and interview style.`
+    : '';
+
   const prompt = `Generate ${count} interview questions for a ${level} ${role} developer.
 ${topicsLine}
+${companyLine}
 Return ONLY a valid JSON array of plain strings. No explanation, no markdown, no extra text.
 Each element must be just the question text as a string.
 ["question 1", "question 2", ...]`;

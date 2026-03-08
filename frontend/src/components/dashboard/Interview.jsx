@@ -51,12 +51,13 @@ const AvgRing = ({ avg }) => {
 
 /* ── SETUP ──────────────────────────────────────────────── */
 const SetupScreen = ({ onStart }) => {
-  const [role, setRole]     = useState('');
-  const [level, setLevel]   = useState('');
-  const [topics, setTopics] = useState([]);
-  const [count, setCount]   = useState(10);
+  const [role, setRole]       = useState('');
+  const [level, setLevel]     = useState('');
+  const [topics, setTopics]   = useState([]);
+  const [count, setCount]     = useState(10);
+  const [company, setCompany] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError]   = useState('');
+  const [error, setError]     = useState('');
 
   const toggleTopic = (t) =>
     setTopics(prev => prev.includes(t) ? prev.filter(x => x !== t) : [...prev, t]);
@@ -68,8 +69,8 @@ const SetupScreen = ({ onStart }) => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const res = await genarateQuestions(role, level, topics, count, token);
-      if (res.success) onStart({ role, level, topics, count }, res.data);
+      const res = await genarateQuestions(role, level, topics, count, company, token);
+      if (res.success) onStart({ role, level, topics, count, company }, res.data);
       else setError(res.message || 'Failed to generate questions.');
     } catch (err) {
       setError(err.message || 'Something went wrong.');
@@ -88,6 +89,16 @@ const SetupScreen = ({ onStart }) => {
             value={role}
             onChange={e => setRole(e.target.value)}
             placeholder="e.g. Frontend Developer, Java Backend, DevOps..."
+          />
+        </div>
+
+        <div className="form-group full-width">
+          <label>Company <span className="label-opt">(optional)</span></label>
+          <input
+            type="text"
+            value={company}
+            onChange={e => setCompany(e.target.value)}
+            placeholder="e.g. Google, Amazon, Startup..."
           />
         </div>
 
@@ -188,7 +199,7 @@ const SessionScreen = ({ config, questions: initialQs, onFinish }) => {
     setError('');
     try {
       const token = localStorage.getItem('token');
-      const res = await genarateQuestions(config.role, config.level, config.topics, 5, token);
+      const res = await genarateQuestions(config.role, config.level, config.topics, 5, config.company || '', token);
       if (res.success) setQuestions(prev => [...prev, ...res.data]);
       else setError(res.message || 'Failed to add questions.');
     } catch (err) {
@@ -205,7 +216,10 @@ const SessionScreen = ({ config, questions: initialQs, onFinish }) => {
           <span className="session-q-count">
             Question {idx + 1} <span className="session-q-total">/ {questions.length}</span>
           </span>
-          <span className="session-role-badge">{config.role} · {config.level}</span>
+          <span className="session-role-badge">
+            {config.role} · {config.level}
+            {config.company && ` · ${config.company}`}
+          </span>
         </div>
         <div className="session-progress-track">
           <div className="session-progress-fill" style={{ width: `${progress}%` }} />
@@ -293,7 +307,10 @@ const SummaryScreen = ({ session, onNewSession, onViewHistory }) => {
         <AvgRing avg={avg} />
         <div className="summary-meta">
           <h2>Session Complete</h2>
-          <p className="summary-sub">{session.config.role} · {session.config.level}</p>
+          <p className="summary-sub">
+            {session.config.role} · {session.config.level}
+            {session.config.company && ` · ${session.config.company}`}
+          </p>
           <p className="summary-sub">
             {session.results.length} questions ·{' '}
             {new Date(session.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
@@ -472,7 +489,6 @@ const Interview = () => {
     <div className="interview-page">
       <div className="interview-page-header">
         <div className="interview-title-row">
-          <img src={interviewIcon} alt="interview" className="icon-interview-header" />
           <div>
             <h1>AI Interview</h1>
             <p>Practice real questions and get instant AI feedback</p>

@@ -2,12 +2,31 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const session = require('express-session');
+const passport = require('passport'); // ← CHANGED: Import passport library
 const connectDB = require('./config/db');
 
 dotenv.config();
 connectDB();
+require('./config/cloudinary');
+require('./config/passport'); // ← ADD THIS: Load passport config AFTER dotenv
 
 const app = express();
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 24 * 60 * 60 * 1000,
+    },
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(morgan('dev'));
 app.use(express.json({ limit: '10mb' }));

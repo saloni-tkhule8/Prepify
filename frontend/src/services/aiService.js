@@ -16,12 +16,11 @@ export const generateRoadmap = async (role, level, targetLevel, timeline, token)
   });
 };
 
-
-export const genarateQuestions = async (role, level, topics = [], count, token) =>
+export const genarateQuestions = async (role, level, topics = [], count, company = '', token) =>
   fetchAI('/api/ai/generate-questions', {
     method: 'POST',
     headers: authHeaders(token),
-    body: JSON.stringify({ role, level, topics, count }),
+    body: JSON.stringify({ role, level, topics, count, company }),
   });
 
 export const evaluateAnswer = async (question, answer, role, token) => {
