@@ -31,7 +31,7 @@ app.use(passport.session());
 app.use(morgan('dev'));
 app.use(express.json({ limit: '10mb' }));
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'optimistic-wisdom-production-bdf4.up.railway.app',
   credentials: true,
 }));
 
