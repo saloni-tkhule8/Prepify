@@ -69,12 +69,13 @@ const Login = () => {
       setLoading(false);
     }
   };
+
   const handleGoogleAuth = () => {
-    window.location.href = 'http://localhost:5000/api/auth/google';
+    window.location.href = `${import.meta.env.VITE_API_URL}/api/auth/google`;
   };
 
   const handleGitHubAuth = () => {
-    window.location.href = 'http://localhost:5000/api/auth/github';
+    window.location.href = `${import.meta.env.VITE_API_URL}/api/auth/github`;
   };
 
   return (

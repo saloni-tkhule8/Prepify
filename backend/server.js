@@ -3,13 +3,13 @@ const morgan = require('morgan');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const session = require('express-session');
-const passport = require('passport'); // ← CHANGED: Import passport library
+const passport = require('passport');
 const connectDB = require('./config/db');
 
 dotenv.config();
 connectDB();
 require('./config/cloudinary');
-require('./config/passport'); // ← ADD THIS: Load passport config AFTER dotenv
+require('./config/passport');
 
 const app = express();
 
@@ -31,7 +31,7 @@ app.use(passport.session());
 app.use(morgan('dev'));
 app.use(express.json({ limit: '10mb' }));
 app.use(cors({
-  origin: 'optimistic-wisdom-production-bdf4.up.railway.app',
+  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
   credentials: true,
 }));
 

@@ -19,6 +19,8 @@ export const fetchWithTimeout = async (url, options, timeout = 10000) => {
 
 const AI_TIMEOUT = 60000;
 
+const BASE_URL = import.meta.env.VITE_API_URL || '';
+
 export const fetchAI = (url, options = {}) => {
   return new Promise((resolve, reject) => {
     const controller = new AbortController();
@@ -27,11 +29,15 @@ export const fetchAI = (url, options = {}) => {
       reject(new Error('Request timed out. Please try again.'));
     }, AI_TIMEOUT);
 
-    fetch(url, { ...options, signal: controller.signal })
+    fetch(`${BASE_URL}${url}`, { ...options, signal: controller.signal })
       .then(res => res.json())
       .then(data => { clearTimeout(timer); resolve(data); })
       .catch(err => { clearTimeout(timer); reject(err); });
   });
+};
+
+export const fetchWithBase = (url, options = {}) => {
+  return fetchWithTimeout(`${BASE_URL}${url}`, options);
 };
 
 export const authHeaders = (token) => ({

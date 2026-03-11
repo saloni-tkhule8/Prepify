@@ -1,5 +1,5 @@
 {
-  "name": "Prepify",
+  "name": "frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,6 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "proxy": "http://prepify-production-c18f.up.railway.app/",
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@types/react": "^19.2.7",

@@ -5,9 +5,14 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: true,
-    allowedHosts: ['56b2-2401-4900-7c7d-449d-58e-2586-42c6-a542.ngrok-free.app'],
+    allowedHosts: 'all',
     proxy: {
-      '/api': 'http://prepify-production-c18f.up.railway.app/'  // ← add this
+      '/api': 'http://localhost:5000'
     }
   },
-})  
+  preview: {
+    host: true,
+    port: 4173,
+    allowedHosts: ['miraculous-reprieve-production.up.railway.app']
+  }
+})
