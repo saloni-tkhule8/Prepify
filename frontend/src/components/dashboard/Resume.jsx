@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { analyzeResume } from '../../services/aiService';
 import './Resume.css';
 
@@ -10,7 +10,15 @@ import missingIcon   from '../../assets/missing.png';
 import suggestIcon   from '../../assets/suggest.png';
 import atsIcon       from '../../assets/ats.png';
 
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
+  return isMobile;
+};
 
 const ATSInfo = () => {
   const [open, setOpen] = useState(false);
@@ -86,6 +94,7 @@ const ScoreRing = ({ score }) => {
 };
 
 const Resume = () => {
+  const isMobile = useIsMobile();
   const [file, setFile] = useState(null);
   const [targetRole, setTargetRole] = useState('');
   const [loading, setLoading] = useState(false);
@@ -138,7 +147,7 @@ const Resume = () => {
       setLoading(false);
     }
   };
-  
+
   const handleReset = (e) => {
     e.preventDefault();
     setResult(null);
